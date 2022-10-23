@@ -2,6 +2,7 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
 const genMD = require('./utils/generateMarkdown');
+const { clear } = require('console');
 // const { title } = require('process');
 
 // TODO: Create an array of questions for user input
@@ -43,25 +44,25 @@ const questions = [
     name: 'email',
     message: 'What is your email address?',}];
 
-inquirer.prompt(questions)
-.then((data) => {
-    console.log(data);
-    return data;
-
-})
-
+    inquirer.prompt(questions)
+    .then((answers) => {
+        writeToFile('./test/readME.md',genMD(answers))
+    }
+    )
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, ()=>
+    console.log (fileName +' generated with your readMe input'));
 
-fs.appendFile(fileName, data)
 }
+
 
 // TODO: Create a function to initialize app
 function init() {
-fs.writeToFile('./test/readMe.md')
+writeToFile('.test/readMe.md',questions)
 }
 
 // Function call to initialize app
-init();
+// init();
 
-writeToFile('./test/readMe.md',genMD);
+// writeToFile('./test/readMe.md',genMD);
