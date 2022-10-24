@@ -2,23 +2,30 @@
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
+
 function renderLicenseBadge(license) {
-license==="MIT" ? licenseBadge = "MIT badge" :
-license==="GNU GPL" ? licenseBadge = "https://img.shields.io/badge/License-GPLv3-blue.svg" :
-licenseBadge = "https://img.shields.io/badge/License-ISC-blue.svg";
+license==="MIT" ? licenseBadge = " ![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)" :
+license==="GNU GPL" ? licenseBadge = " ![GNU](https://img.shields.io/badge/License-GPLv3-blue.svg)" :
+license==='ISC' ? licenseBadge = " ![ISC](https://img.shields.io/badge/License-ISC-blue.svg)":
+licenseBadge==="";
+return licenseBadge;
 }
+
+
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
-license==="MIT" ? licenseURL = "https://spdx.org/licenses/MIT.html" :
+license==="MIT" ? licenseURL = "https://opensource.org/licenses/MIT" :
 license==="GNU GPL" ? licenseURL = "https://www.gnu.org/licenses/gpl-3.0-standalone.html" :
-licenseURL = "https://opensource.org/licenses/ISC"
+license==='ISC'? licenseURL = "https://opensource.org/licenses/ISC" :
+licenseURL = ''
+return licenseURL;
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-licenseTxt = {body: '##License<br>License:'+license+renderLicenseBadge(license)+renderLicenseLink(license)}
+licenseTxt = '## License\n'+renderLicenseBadge(license)+'<br />'+renderLicenseLink(license)
 return licenseTxt;
 }
 
@@ -26,39 +33,41 @@ return licenseTxt;
 function generateMarkdown(data) {
   
   return `# ${data.title}
-  ## Description
-  ${data.description}
+## Description
+  ${data.description}\n
+  
+### User Story
+  ${data.userstory}\n
 
-  User Story<br>
-  ${data.userstory}<br>
-  Acceptance Criteria<br>
-  ${data.acceptcrit}<br>
-  ## Table of Contents
+### Acceptance Criteria
+  ${data.acceptcrit}\n
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
-<br>
-  ## Deployment
-  ${data.deploy}
+- [Tests](#tests)
+- [Questions](#questions)
 
-  ## Usage
+## Installation
+- Github: ${data.deployGit}
+- URL: ${data.deployURL}
+
+## Usage
   ${data.usage}
 
-  ## Collaborators
+## Credits
   ${data.collab}
-  `
-  +renderLicenseSection(`${data.license}`)+
-  `
-  ## Tests
+  
+${renderLicenseSection(data.license)}
+  
+## Tests
   ${data.tests}
 
-  ## Contact
-  Github: 
-  ${data.gitname}<br>
-  E-mail: 
-  ${data.email}`;
+## Questions
+  Github: ${data.gitname}\n
+  E-mail: ${data.email}`;
 }
 
 

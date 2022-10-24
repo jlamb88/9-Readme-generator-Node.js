@@ -21,8 +21,12 @@ const questions = [
     name: 'acceptcrit',
     message: 'What are your acceptance criteria?',},
     {
-    name: 'deploy',
-    message: 'What are the deployment features?',},
+    name: 'deployGit',
+    message: 'What is the deployment Github?',},
+    {
+    name:'deployURL',
+    message: 'What is the deployed URL?'
+    },
     {
     name: 'usage',
     message: 'What are the usage intructions?',},
@@ -44,11 +48,7 @@ const questions = [
     name: 'email',
     message: 'What is your email address?',}];
 
-    inquirer.prompt(questions)
-    .then((answers) => {
-        writeToFile('./test/readME.md',genMD(answers))
-    }
-    )
+    
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, ()=>
@@ -59,10 +59,14 @@ function writeToFile(fileName, data) {
 
 // TODO: Create a function to initialize app
 function init() {
-writeToFile('.test/readMe.md',questions)
+    inquirer.prompt(questions)
+    .then((answers) => {
+        fileFromTitle = `${answers.title}`.replaceAll(' ','_')
+        writeToFile(fileFromTitle,genMD(answers))
+    }
+    )
 }
 
 // Function call to initialize app
-// init();
+init();
 
-// writeToFile('./test/readMe.md',genMD);
