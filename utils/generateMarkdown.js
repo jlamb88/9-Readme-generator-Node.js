@@ -2,9 +2,9 @@
 // If there is no license, return an empty string
 
 function renderLicenseBadge(license) {
-license==="MIT" ? licenseBadge = " ![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)" :
-license==="GNU GPL" ? licenseBadge = " ![GNU](https://img.shields.io/badge/License-GPLv3-blue.svg)" :
-license==='ISC' ? licenseBadge = " ![ISC](https://img.shields.io/badge/License-ISC-blue.svg)":
+license==="MIT" ? licenseBadge = " ![MIT](https://img.shields.io/badge/License-MIT-yellow.svg) \n" :
+license==="GNU GPL" ? licenseBadge = " ![GNU](https://img.shields.io/badge/License-GPLv3-blue.svg) \n" :
+license==='ISC' ? licenseBadge = " ![ISC](https://img.shields.io/badge/License-ISC-blue.svg) \n":
 licenseBadge==="";
 return licenseBadge;
 }
@@ -23,7 +23,7 @@ return licenseURL;
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
 license ? 
-licenseTxt = '## License\n'+renderLicenseBadge(license)+'\n'+renderLicenseLink(license) :
+licenseTxt = '## License\n'+renderLicenseBadge(license)+'<br>'+renderLicenseLink(license) :
 licenseTxt=""
 return licenseTxt;
 }

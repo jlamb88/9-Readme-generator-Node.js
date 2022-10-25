@@ -1,0 +1,40 @@
+# ReadME Generator
+## Description
+  A node.js file that will generate a robust professional markdown file from inquirer prompts
+
+ ### User Story
+  AS a boot camp student I want a node.js application that will help me generate full professional readMe files
+
+### Acceptance Criteria
+  WHEN a run a node.js file THEN a series of inquirer prompts will appear THEN a readMe file will be generated from the inquirer inputs THEN a license badge and link will be generated from my license type THEN a markdown file will be generated with a filename that is the same as the project title
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [License](#license)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Installation
+- Github: None
+- URL: None
+
+## Usage
+  NPM libraries: inquirer
+
+## Credits
+  Primary: Joseph Lamb. No collaborators
+
+## License
+ ![GNU](https://img.shields.io/badge/License-GPLv3-blue.svg) 
+<br>https://www.gnu.org/licenses/gpl-3.0-standalone.html
+
+## Tests
+  No tests
+
+## Questions
+  Github: jlamb88
+
+  E-mail: jlambpco@gmail.com
