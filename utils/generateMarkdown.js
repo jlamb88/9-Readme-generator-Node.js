@@ -1,6 +1,4 @@
-// const data = require('../index.js')
-
-// TODO: Create a function that returns a license badge based on which license is passed in
+// Returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 
 function renderLicenseBadge(license) {
@@ -11,8 +9,7 @@ licenseBadge==="";
 return licenseBadge;
 }
 
-
-// TODO: Create a function that returns the license link
+// Returns the license link
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
 license==="MIT" ? licenseURL = "https://opensource.org/licenses/MIT" :
@@ -22,27 +19,25 @@ licenseURL = ''
 return licenseURL;
 }
 
-// TODO: Create a function that returns the license section of README
+// Returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-licenseTxt = '## License\n'+renderLicenseBadge(license)+'<br />'+renderLicenseLink(license)
+license ? 
+licenseTxt = '## License\n'+renderLicenseBadge(license)+'\n'+renderLicenseLink(license) :
+licenseTxt=""
 return licenseTxt;
 }
 
-// TODO: Create a function to generate markdown for README
+// Generate markdown for README
 function generateMarkdown(data) {
-  
   return `# ${data.title}
 ## Description
   ${data.description}\n
-  
-### User Story
+ ### User Story
   ${data.userstory}\n
-
 ### Acceptance Criteria
   ${data.acceptcrit}\n
-## Table of Contents
-
+## Table of Contents\n
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
@@ -52,23 +47,17 @@ function generateMarkdown(data) {
 
 ## Installation
 - Github: ${data.deployGit}
-- URL: ${data.deployURL}
-
+- URL: ${data.deployURL}\n
 ## Usage
-  ${data.usage}
-
+  ${data.usage}\n
 ## Credits
-  ${data.collab}
-  
-${renderLicenseSection(data.license)}
-  
+  ${data.collab}\n
+${renderLicenseSection(data.license)}\n
 ## Tests
-  ${data.tests}
-
+  ${data.tests}\n
 ## Questions
   Github: ${data.gitname}\n
   E-mail: ${data.email}`;
 }
-
 
 module.exports = generateMarkdown;
